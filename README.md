@@ -1,1 +1,1 @@
-# LearnJava4kid
+# Learn JavaScript
