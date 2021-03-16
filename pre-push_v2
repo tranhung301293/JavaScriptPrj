@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local sha1> <remote ref> <remote sha1>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+
+echo "Run pre-push"
+
+#DOCUMENT 
+#https://stackoverflow.com/questions/1800783/how-to-compare-a-local-git-branch-with-its-remote-branch
+
+
+declare -i flag=0
+
+#test=$(git diff --name-only @ @{upstream})
+#test=$(git diff --name-only @ @{push})
+#for i in  $test ;do
+#	echo $i
+#done
+
+#list_commit_files=$(git diff --name-only origin master)
+list_commit_files=$(git diff --name-only @ @{push} | grep -E '\.scml$')
+
+for i in  $list_commit_files ;do
+	echo $i
+done
+
+#Define not allow list
+not_allow_list=( "/Scope3_Highres/" "/PIVI2/")
+
+for file in $list_commit_files; do
+	for item in  "${not_allow_list[@]}";do
+  		if grep -E -q "\b${item}\b" <<<${file} >/dev/null 2>&1
+  		then
+    		echo "'$file' => Not allow to change the :'$item'  !!"
+     		 flag=1
+    		break
+  		fi
+    done
+done
+
+if [ $flag -eq 1 ] ; then
+	echo "FLAG = $flag NOT ALLOW"
+	echo "You are prevented to push the change to remote"
+fi	
+exit $flag
+
+#PIVI2='PIVI2
+#key1'
+#for file in $(git diff --name-only origin/master..HEAD)
+#do
+#	echo $file
+#	if grep -q --line-regexp "PIVI2" <<< "$file";then
+#		echo "Can't push PIVI2"
+#	else
+#		echo "PATH OK"
+#	fi	
+#done
+#
+#
+#
+#MUST_NOT_CHANGE='dir/key1.json
+#key2.json'
+#
+#if git diff --name-only origin/master..HEAD |
+#   grep --quiet --line-regexp --fixed-strings "$MUST_NOT_CHANGE"
+#then
+#  echo Commit would modify one or more files that must not change.
+#  exit 1
+#else
+#  exit 0
+#fi
+#
+#exit 0
+

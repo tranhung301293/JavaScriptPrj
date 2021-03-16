@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+##!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# If there are whitespace errors, print the offending file names and fail.
+
+echo "Run pre commit"
+
+declare -i flag=1
+
+#filter all changed files with end by ".scml"
+list_commit_files=$(git status --short | grep -E '^(A|M)' | awk '{ print $2 }' | grep -E '\.scml$')
+
+for i in  $list_commit_files ;do
+  echo $i
+done
+
+echo "Run pre commit 2"
+
+#Define not allow list
+not_allow_list=("/Scope3_Highres/" "/PIVI2/")
+
+for file in $list_commit_files; do
+  for item in  "${not_allow_list[@]}";do
+      if grep -E -q "\b${item}\b" <<<${file} >/dev/null 2>&1
+      then
+         echo "'$file' => Not allow to change the :'$item'  !!"
+         flag=1
+        break
+      fi
+    done
+done
+echo "Run pre commit 3"
+
+if [ $flag -eq 1 ] ; then
+  echo "FLAG = $flag NOT ALLOW"
+  echo "You are prevented to commit the change"
+fi  
+exit $flag
+
+
+#
+## loop to check if file can be committed or not
+#for files in $path_commit; do
+#	for reqsubstr in  '\/Scope2\/' '\/PIVI\/';do
+#  		if [ -z "${files##*$reqsubstr*}" ] ;then
+#    		 echo "'$files' will be committed !!!"
+#   		 else
+#     		 echo "'$files': Not allow to change the file  !!"
+#     		 flag=0
+#
+#    	fi
+#    done
+#done
+#
+#
+#if [ $flag -eq 0 ] ; then
+#	echo "FLAG = $flag"
+#else
+#	echo "FLAG = $flag"
+#fi	
+#exit 1
