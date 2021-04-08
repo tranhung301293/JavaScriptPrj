@@ -3,3 +3,8 @@ https://shopee.vn/T%C3%BAi-%C4%91eo-ch%C3%A9o-Mark-Ryden-c%C3%B3-kh%C3%B3a-k%C3%
 
 
 https://devarea.com/android-hidl-and-project-treble/?sfw=pass1617100030#.YGL9D68zZaQ
+
+
+Thinh.LeQui@vn.bosch.com
+
+123Khongphailapassdaunha
