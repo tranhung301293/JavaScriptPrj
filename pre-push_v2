@@ -31,61 +31,49 @@ declare -i flag=0
 #test=$(git diff --name-only @ @{upstream})
 #test=$(git diff --name-only @ @{push})
 #for i in  $test ;do
-#	echo $i
+# echo $i
 #done
 
-#list_commit_files=$(git diff --name-only origin master)
-list_commit_files=$(git diff --name-only @ @{push} | grep -E '\.scml$')
+GLOBAL_LOG=""
 
-for i in  $list_commit_files ;do
-	echo $i
-done
 
-#Define not allow list
-not_allow_list=( "/Scope3_Highres/" "/PIVI2/")
+LIST_SCML_FILES=$(git diff --name-only @ @{push} | grep -E '\.scml$')
 
-for file in $list_commit_files; do
-	for item in  "${not_allow_list[@]}";do
-  		if grep -E -q "\b${item}\b" <<<${file} >/dev/null 2>&1
-  		then
-    		echo "'$file' => Not allow to change the :'$item'  !!"
-     		 flag=1
-    		break
-  		fi
+FILE_XHLD=$(git diff --name-only @ @{push} | grep -E 'abc.xhld')
+FILE_GEN=$(git diff --name-only @ @{push} | grep -E 'abc.scml')
+
+
+
+# check if vsr and gen file exist 
+if [[ -z $FILE_XHLD ]]  && [[ -z $FILE_GEN ]]
+then
+  echo "OKKK"
+fi
+
+
+NOT_ALLOW_LIST=( "Scope3_Nissan_HighRes" "PIVI2")
+ALLOW_FOR_GADGET="/AppHmi_Umbrella/PIVI2/GUI"
+
+
+# check if SCML file can be pushed
+for FILE in $LIST_SCML_FILES; do
+  for ITEM in  "${NOT_ALLOW_LIST[@]}";do
+      if  grep -E -q "\b${ITEM}\b" <<<${FILE} >/dev/null 2>&1 
+      then
+        if ! grep -E -q "\b${ALLOW_FOR_GADGET}\b" <<<${FILE} >/dev/null 2>&1 
+        then
+            echo "'$FILE' => Not allow to change the :'$ITEM'  !!"
+            flag=1
+        fi
+      fi
     done
 done
 
+
 if [ $flag -eq 1 ] ; then
-	echo "FLAG = $flag NOT ALLOW"
-	echo "You are prevented to push the change to remote"
-fi	
-exit $flag
+  echo "You are prevented to push the change to remote"
+fi  
+#exit $flag
 
-#PIVI2='PIVI2
-#key1'
-#for file in $(git diff --name-only origin/master..HEAD)
-#do
-#	echo $file
-#	if grep -q --line-regexp "PIVI2" <<< "$file";then
-#		echo "Can't push PIVI2"
-#	else
-#		echo "PATH OK"
-#	fi	
-#done
-#
-#
-#
-#MUST_NOT_CHANGE='dir/key1.json
-#key2.json'
-#
-#if git diff --name-only origin/master..HEAD |
-#   grep --quiet --line-regexp --fixed-strings "$MUST_NOT_CHANGE"
-#then
-#  echo Commit would modify one or more files that must not change.
-#  exit 1
-#else
-#  exit 0
-#fi
-#
-#exit 0
 
+#exit 1
