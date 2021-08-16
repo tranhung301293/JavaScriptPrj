@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    /* background-color: #ffff;
+     */
+    background-image: url('image/pexels-ovan-62693.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header {
+    padding: 40px;
+    text-align: center;
+    /* background: #dfeeee; */
+    color: black;
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+h2.request {
+    margin: 20px 0 !important;
+}
+
+.row,
+.col,
+.col-6 {
+    margin: 0 !important;
+    padding: 10px !important;
+}
+
+li {
+    list-style: none;
+}
+
+h2.navigator {
+    /* border-bottom: 1px solid black; */
+    padding: 10px 0;
+    margin: 0;
+    background-color: thistle;
+    color: black;
+    /* border: 1px solid black; */
+}
+
+.item {
+    margin-top: 10px;
+    background-color: rgb(231, 224, 213);
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    /* border: 1px solid black; */
+    text-transform: uppercase;
+}
+
+
+.item-selected {
+    background-color: rgb(61, 134, 207);
+    color: white;
+}
+
+.item-selected a {
+    color: white;
+}
+
+.info {
+    background-color: thistle;
+    /* border: 1px solid black; */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+table {
+    table-layout: auto;
+    width: 100%;
+    background-color: rgb(154, 186, 187);
+    /* border: 1px solid black; */
+}
+
+td {
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+input[type=text] {
+    width: 65%;
+    padding: 6px 10px;
+    /* margin: 4px 0; */
+    margin-left: 23px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 50%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* .col-right {
+
+    background-color: wheat;
+} */
+
+.title-span {
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1500px) {
+    /* 
+    .row,
+    .navbar {
+        flex-direction: column;
+    } */
+}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div>COOPERATE BUILD SYSTEM</div>
+  </div>
+
+  <!-- The flexible grid (content) -->
+  <div class="row">
+    <div class="col">
+      <!-- <h2 class="navigator">Navigator</h2> -->
+      <div class="item item-selected"> <a href="">VM-UAR2HC-OSD4</a> </div>
+      <div class="item"><a href="">VM-UAR2HC-OSD4</a></div>
+      <div class="item"><a href="">VM-UAR2HC-OSD4</a></div>
+    </div>
+    <div class="col-6 ">
+      <h2 class="request">REQUEST BUILD FORM</h2>
+
+      <form method="POST">
+        <table style="width: 100%">
+          <colgroup>
+            <col span="1" style="width: 30%;">
+            <col span="1" style="width: 70%;">
+          </colgroup>
+
+
+
+          <!-- Put <thead>, <tbody>, and <tr>'s here! -->
+          <tbody>
+            <!----- Workspace ---------------------------------------------------------->
+            <tr>
+              <td>SELECT WORKSPACE: </td>
+              <td colspan="2">
+                <select name="workspace" id="id_workspace">
+                  <option value="1">NIGHTLY 21.1</option>
+                  <option value="2">RELEAE 21.1</option>
+                </select>
+              </td>
+            </tr>
+
+            <!-----Base label ---------------------------------------------------------->
+            <tr>
+              <td>BASE LABEL: </td>
+              <td>
+                <select name="base_label" id="id_base_label">
+                  <option value="0">Do not change</option>
+                  <option value="10">Other base label</option>
+                </select>
+                <a href="">NIGHTLY_2020_18_08_01</a>
+              </td>
+            </tr>
+
+            <!----- Base label custom input ---------------------------------------------------------->
+            <tr>
+              <td colspan="2">
+                <input type="text" name="base_label_custom" class="field-seperator custom-text-input"
+                  id="id_base_label_custom" placeholder="NIGHTLY_2020_18_08_01" />
+
+              </td>
+            </tr>
+
+            <!----- ai_hmi_nissan ----------------------------------------------------------->
+            <tr>
+              <td>AI_NISSAN_HMI COMMIT:</td>
+              <td>
+                <select name="ai_nissan_hmi" class="field-seperator" id="id_ai_nissan_hmi">
+                  <option value="0">Do not change</option>
+                  <option value="10">git cherry-pick</option>
+                  <option value="10">git reset --hard</option>
+                  <option value="10">cherry-pick from gerrit</option>
+                </select>
+                <a href="">aujh4xld</a>
+              </td>
+            </tr>
+
+            <!----- ai_hmi_nissan custom input ---------------------------------------------------------->
+            <tr>
+              <td colspan="2"> <input type="text" name="ai_nissan_hmi_custom" class="field-seperator custom-text-input"
+                  id="id_ai_hmi_nissan_custom" placeholder="aujh4xld" />
+              </td>
+            </tr>
+
+            <!----- ai_hmi_base ---------------------------------------------------------->
+            <tr>
+              <td>AI_HMI_BASE COMMIT:</td>
+              <td>
+                <select name="ai_hmi_base" class="field-seperator" id="id_ai_hmi_base">
+                  <option value="0">Do not change</option>
+                  <option value="10">git cherry-pick</option>
+                  <option value="10">git reset --hard</option>
+                  <option value="10">cherry-pick from gerrit</option>
+                </select>
+              </td>
+            </tr>
+
+            <!----- Build Command ---------------------------------------------------------->
+            <tr>
+              <td>BUILD COMMAND:</td>
+              <td>
+                <input type="radio" name="build_cmd" checked="checked" value="default">
+                Do not change
+                <input type="radio" name="build_cmd" value="custom">
+                Custom
+              </td>
+            </tr>
+
+            <!----- Custom build command ---------------------------------------------------------->
+            <tr>
+              <td colspan="2"> <input type="text" name="build_cmd_custom" id="id_ai_hmi_nissan_custom"
+                  placeholder="Hi there !!" />
+              </td>
+            </tr>
+
+            <!----- Submit and Reset ------------------------------------------------->
+            <tr>
+              <td colspan="3" align="center">
+                <input type="submit" value="Request Build">
+                <br>
+                <br>
+                <br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <!----- Status ------------------------------------------------->
+    </div>
+    <div class="col col-right">
+      <h4 class="info">Status</h4>
+      <ul>
+        <li>
+          <span class="title-span">PC: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Owner: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Status: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Last update on: </span>
+          <span>Loading ....</span>
+        </li>
+      </ul>
+
+      <h4 class="info">Active Job</h4>
+      <ul>
+        <li>
+          <span class="title-span">Job Type: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request From: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request Time: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Progress: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request From: </span>
+          <span>Loading ....</span>
+        </li>
+      </ul>
+
+      <h4 class="info">Last Job</h4>
+      <ul>
+        <li>
+          <span class="title-span">Job Type: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request From: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request Time: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Progress: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Request From: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Log: </span>
+          <span>Loading ....</span>
+        </li>
+        <li>
+          <span class="title-span">Binary: </span>
+          <span>Loading ....</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <script src="./index.js"></script>
+
+</body>
+
+</html>
