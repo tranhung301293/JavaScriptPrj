@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Sanchez&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.header {
+    width: 100%;
+    height: 170px;
+    background-image: url('image/bosch.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+
+.header>div {
+    border-radius: 5px;
+    position: absolute;
+    left: 20%;
+    top: 15%;
+    width: 60%;
+    height: 70%;
+    background: white;
+    opacity: 0.75;
+    color: black;
+}
+
+.text_title {
+    position: relative;
+    text-align: center;
+    font-family: 'Sanchez', serif;
+    font-size: 300%;
+    line-height: 200%;
+}
+
+.text_title_content {
+    position: absolute;
+    left: 37%;
+    bottom: 15%;
+    font-family: 'Sanchez', serif;
+    font-size: 140%;
+}
+
+h2 {
+    text-align: center;
+}
+
+h2.request {
+    margin: 10px 0 !important;
+}
+
+.row,
+.col,
+.col-8 {
+    margin: 0 !important;
+    padding: 10px !important;
+}
+
+.col-8 {
+    background-color: #A3E4D7;
+    border: 0.1rem solid #D4EFDF;
+}
+
+.col {
+    background-color: #D4E6F1;
+}
+
+.info {
+    background-color: #7baac9;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+li {
+    list-style: none;
+}
+
+ol,
+ul {
+    padding-left: 0 !important;
+    font-size: 15px;
+}
+
+.title-span {
+    font-size: 18px;
+    font-family: 'Sanchez', serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+h2.navigator {
+    padding: 10px 0;
+    margin: 0;
+    background-color: thistle;
+    color: black;
+}
+
+.item {
+    margin-top: 10px;
+    background-color: rgb(187, 187, 186);
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+
+.item-selected {
+    background-color: rgb(61, 134, 207);
+    color: white;
+}
+
+.item-selected a {
+    color: white;
+    text-decoration: none;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+}
+
+table {
+    table-layout: auto;
+    width: 100%;
+    background-color: rgb(214, 210, 210);
+}
+
+td {
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 6px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+select {
+    width: 50%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.title-span {
+    font-weight: 700;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1500px) {
+
+    .row,
+    .navbar {
+        flex-direction: column;
+    }
+}
